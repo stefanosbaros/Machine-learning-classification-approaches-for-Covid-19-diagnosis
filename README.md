@@ -1,4 +1,4 @@
-# A machine learning classification approach for Covid 19 diagnosis based on clinical symptoms
+# A machine learning classification approach for Covid-19 diagnosis based on clinical symptoms
 
 **Authors**: Stefanos Baros and Ana Jevtic (both authors contributed equally)
 
