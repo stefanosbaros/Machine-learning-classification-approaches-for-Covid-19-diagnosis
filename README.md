@@ -32,36 +32,33 @@ The `feature_engineering_and_l1_regularization_features_selection.py` is the fil
 
 The `Covid_prediction_classification_approaches.py.py` file contains the implementation of the logistic regression and random forest classification approaches for predicting whether an individual may be infected or not with Covid-19 based on the symptoms he is experiencing.
 
-## Project details
-###
+## Project details and results
+First, we used one hot encoding to design new features that describe the Covid-19 test result, whether the individual is 60 years old and above, whether the individual came in contact with a confirmed Covid-19 positive case, and whether the individual is male or female. We then replaced related columns in the initial data set. Our methodology for constructing our classifiers can be classified in three main steps:
 
-## Results
+- Feature engineering for design of new features
+- Model selection via l1 regularization 
+- Design of logistic regression and random forest classifiers
 
-The **features** used to construct a regression model are:
 
-- `features =['TREND','TMP','TMP2','TMP3','SIN_MONTH','COS_MONTH','TMPxSIN_MONTH',`
-            `'TMPxCOS_MONTH','TMP2xSIN_MONTH','TMP2xCOS_MONTH', 'TMP3xSIN_MONTH','TMP3xCOS_MONTH',`
-           ` 'TMPxSIN_HOUR','TMPxCOS_HOUR','TMP2xSIN_HOUR','TMP2xCOS_HOUR', 'TMP3xSIN_HOUR','TMP3xCOS_HOUR',`
-           ` 'DTMPxSIN_HOUR', 'DTMPxCOS_HOUR', 'Holi','isWknd']`
+### Feature engineering for design of new features
+
+Initially the **features** in our model were:
+
+- `features =['cough', 'fever', 'sore_throat', 'shortness_of_breath' 'head_ache','age_60_and_above', 'gender', 'test_indication']`
             
-where, TMP, TMP2 and TMP3 denote the temperature, temperature squared and temperature in the cubic power, respectively. The features SIN_MONTH, COS_MONTH, SIN_HOUR, COS_HOUR denote the cyclical variables associated with the particular month of the year and hour of the day. 
+where `test_indication` captured whether the individual came in contact with confirmed positive case. After performing **one-hot encoding** our new list of **features** became:
 
-We construct **seven regression models** including the full model, each time considering a different **subset of features**:
+- `features=['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache',  'age_60_and_above', 'Male', 'Female', 'Contact_with_confirmed']`
 
-- `Model 1= ['TREND','TMP','TMP2']`
-- `Model 2= ['TREND','TMP','TMP2','TMP3'])`
-- `Model 3= ['TREND','TMP','TMP2','TMP3','SIN_MONTH','COS_MONTH'])`
-- `Model 4= ['TREND','TMP','TMP2','TMP3','SIN_MONTH','COS_MONTH', 'DTMPxSIN_HOUR', 'DTMPxCOS_HOUR'])`
-- `Model 5=['TREND','TMP','TMP2','TMP3','SIN_MONTH','COS_MONTH','TMPxSIN_MONTH',`
-            `'TMPxCOS_MONTH','TMP2xSIN_MONTH','TMP2xCOS_MONTH', 'TMP3xSIN_MONTH','TMP3xCOS_MONTH'])`
-- `Model 6= ['TREND','TMP','TMP2','TMP3','SIN_MONTH','COS_MONTH','TMPxSIN_MONTH',`
-            `'TMPxCOS_MONTH','TMP2xSIN_MONTH','TMP2xCOS_MONTH', 'TMP3xSIN_MONTH','TMP3xCOS_MONTH','DTMPxSIN_HOUR', 'DTMPxCOS_HOUR']`
-- `Full model= ['TREND','TMP','TMP2','TMP3','SIN_MONTH','COS_MONTH','TMPxSIN_MONTH',`
-            `'TMPxCOS_MONTH','TMP2xSIN_MONTH','TMP2xCOS_MONTH', 'TMP3xSIN_MONTH','TMP3xCOS_MONTH',`
-           ` 'TMPxSIN_HOUR','TMPxCOS_HOUR','TMP2xSIN_HOUR','TMP2xCOS_HOUR', 'TMP3xSIN_HOUR','TMP3xCOS_HOUR',`
-           ` 'DTMPxSIN_HOUR', 'DTMPxCOS_HOUR', 'Holi','isWknd']`
+By considering all possible **interactions among these main features** except the male-female one we obtained the following list of **features**:
 
-The performance of these different models is assessed using **standard goodness-of-fit and accuracy criteria** as shown in the table below. 
+- `features=['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache', 'age_60_and_above', 'Male', 'Female', 'Contact_with_confirmed', 'cough+fever', 'cough+sore_throat', 'cough+shortness_of_breath', 'cough+head_ache', 'cough+age_60_and_above', 'cough+Male', 'cough+Female', 'cough+Contact_with_confirmed', 'fever+sore_throat', 'fever+shortness_of_breath', 'fever+head_ache', 'fever+age_60_and_above', 'fever+Male', 'fever+Female', 'fever+Contact_with_confirmed', 'sore_throat+shortness_of_breath', 'sore_throat+head_ache', 'sore_throat+age_60_and_above', 'sore_throat+Male', 'sore_throat+Female', 'sore_throat+Contact_with_confirmed', 'shortness_of_breath+head_ache', 'shortness_of_breath+age_60_and_above', 'shortness_of_breath+Male', 'shortness_of_breath+Female', 'shortness_of_breath+Contact_with_confirmed', 'head_ache+age_60_and_above', 'head_ache+Male', 'head_ache+Female', 'head_ache+Contact_with_confirmed', 'age_60_and_above+Male', 'age_60_and_above+Female', 'age_60_and_above+Contact_with_confirmed', 'Male+Contact_with_confirmed', 'Female+Contact_with_confirmed']`
+
+This list of features was subsequently used in model selection.
+
+### Model selection via l1 regularization
+
+Having obtained a comprehensive list of features including new ones that capture interactions among the main features we performed logistic regression with l1 regularization in order to reduce this list to one containing only the important features.
 
 
 | Model | Adjusted R-squared | Mean squared error (MSE) | Mean absolute error (MAE) |
