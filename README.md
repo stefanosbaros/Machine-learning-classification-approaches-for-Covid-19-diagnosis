@@ -1,4 +1,4 @@
-# A machine learning classification approach for Covid 19 diagnosis based on clinical-symptoms
+# A machine learning classification approach for Covid 19 diagnosis based on clinical symptoms
 
 **Authors**: Stefanos Baros and Ana Jevtic (both authors contributed equally)
 
@@ -10,26 +10,23 @@ In this project, we used data that were publicly reported by the Israeli Ministr
 
 ## Dataset description
 
-The dataset used in this project originates from the [Covid tested individuals data set](https://github.com/nshomron/covidpred/tree/master/data) - which is downloaded from the Israeli Ministry of Health website and translated into English by the authors of the paper [https://www.nature.com/articles/s41746-020-00372-6](https://www.nature.com/articles/s41746-020-00372-6).
+The dataset used in this project originates from the [Covid tested individuals data set](https://github.com/nshomron/covidpred/tree/master/data) - which is downloaded from the Israeli Ministry of Health website and translated into English by the authors of the paper [Machine learning-based prediction of COVID-19 diagnosis based on symptoms](https://www.nature.com/articles/s41746-020-00372-6).
 
-Data (loads of 20 zones and temperature of 11 stations) history ranges from the 1st hour of 2004/1/1 to the 6th hour of 2008/6/30. Given actual temperature history, 8 nonconsecutive weeks in the load history are set to be missing.
+Data contains experiencing symptoms and Covid-19 test results for 1048575 people who were tested between 9th of October of 2020 and 11th of December of 2020 in Israel. There are 10 columns in the data, the first one recoding the Covid-19 test date, and the rest ones recording symptoms (cough, fever, sore throat, shortness of breath, headache), gender, whether the individual came in contact with a confirmed Covid-19 positive case, whether the individual is above 60 years old or not and finally the Covid-19 test result.
 
-In both of the original dataset files three columns are calendar variables: year, month of the year and day of the month, and the last 24 columns are the 24 hours of the day. Files:
-- `Load_history.csv` - first column is load zone ID
-- `Temperature_history.csv` - first column is temperature station ID
 
-Additionally, a file containing a list of holidays, `Holiday_list.csv`, for the period 2004-2008 is used.
 
 ## Description of files
 
-There are **four** main files in this project repository:
+There are **three** main files in this project repository:
 
-- `dataPrep.py`
-- `DataAnalysis.py`
-- `Load_forecasting.py`
+- `forward_greedy_algorithm_features_selection.py`
+- `feature_engineering_and_l1_regularization_features_selection.py`
+- `Covid_prediction_classification_approaches.py`
 
 
-The `DataAnalysis.py` contains code for imputation of missing data and correlation analysis for load zones and temperature stations. The `Load_history.csv` is missing 8 nonconsecutive weeks of load data. Missing hourly load values were imputed using the mean value of the same load zone at the same time (hour, day, month) over the other available years. The correlation analysis showed that there is a strong correlation, for example, between load in load zone 1 and temperature measured by temperature station 6 (corr_coeff ~ 0.85). It is therefore likely that the load zone 1 and temperature station 6 are geograpically collocated.
+The `forward_greedy_algorithm_features_selection.py` 
+
 
 The `dataPrep.py` contains code for data cleansing and preprocessing for regression. Various features (described below), including main effects and interaction effects, are generated and added to the datatable `full_model.csv`
 
