@@ -84,7 +84,7 @@ From the above table, we see that **C=0.1** yields the predictor with the **best
 
 By retaining only the features which correspond to **nonzero** coefficients we finally ended up with the following list of **important features**:
 
-
+- `features=['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache', 'Male', 'Female', 'Contact_with_confirmed', 'cough+fever', 'cough+sore_throat', 'cough+shortness_of_breath', 'cough+head_ache', 'cough+age_60_and_above', 'cough+Male', 'cough+Contact_with_confirmed', 'fever+sore_throat', 'fever+shortness_of_breath', 'fever+head_ache', 'fever+age_60_and_above', 'fever+Male', 'fever+Contact_with_confirmed', 'sore_throat+shortness_of_breath', 'sore_throat+head_ache', 'sore_throat+age_60_and_above', 'sore_throat+Contact_with_confirmed', 'shortness_of_breath+head_ache', 'shortness_of_breath+Female', 'shortness_of_breath+Contact_with_confirmed', 'head_ache+age_60_and_above', 'head_ache+Female', 'head_ache+Contact_with_confirmed', 'age_60_and_above+Male', 'age_60_and_above+Female', 'age_60_and_above+Contact_with_confirmed', 'Male+Contact_with_confirmed', 'Female+Contact_with_confirmed']`
 
 
 ### Design of logistic regression and random forest classifiers
@@ -93,7 +93,9 @@ Lastly, we designed a logistic regression classifier and a random forest classif
 
 | Logistic regression accuracy | Random forest accuracy |
 | ----------- | ----------- |
-| 10 | 0.90713 |
+| 0.910078 | 0.91|
 
 We also show the confusion matrices of both classifiers.
+
+
         
