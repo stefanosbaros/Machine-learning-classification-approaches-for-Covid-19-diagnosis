@@ -58,7 +58,7 @@ This list of features was subsequently used in model selection.
 
 ### Model selection via l1 regularization
 
-Having obtained a comprehensive list of features including the new ones that capture interactions among the main features we performed logistic regression with l1 regularization in order to reduce this list to one containing only the important features. By defining the regularization penalty as l=1/C, we first performed logistic regression with l1 regularization by considering values for the constant C as given in the table below. For each value C, we obtained a different logistic regression classifier whose performance on the training set and test set is recorded. We note that, 10% of the data is used for validation and 90% for training.
+Having obtained a comprehensive list of features including the new ones that capture interactions among the main features we performed logistic regression with l1 regularization in order to reduce this list to one containing only the important features. By defining the regularization penalty as l=1/C, we first performed logistic regression with l1 regularization by considering values for the constant C as given in the table below. For each value C, we obtained a different logistic regression classifier whose performance on the training set and test set is recorded. We note that, **10% of the data is used for validation and 90% for training**.
 
 
 | C | Accuracy on training set | Accuracy on test set |
@@ -69,13 +69,20 @@ Having obtained a comprehensive list of features including the new ones that cap
 |  0.001 | 0.90186 | 0.90041 | 
 
 
-From the above table, we see that **C=0.1** yields the predictor with the **best accuracy** both on training and test sets. Given that, we then repeat this process but now considering values for the constant C around 0.1. Specifically, we consider values for C in the range [0-0.3] with 0.01 step. The **best** performance is obtained for **C=0.12** which corresponds to **regularization penalty l=8.33**.  For this penalty factor, we obtained the following vector with the logistic regression coefficients:
+From the above table, we see that **C=0.1** yields the predictor with the **best accuracy** both on training and test sets. Given that, we then repeat this process but now considering values for the constant C around 0.1. Specifically, we consider values for C in the range [0-0.3] with 0.01 step. The **best** performance, training accuracy=0.907154, test accuracy= 0.906273 is obtained for **C=0.12** which corresponds to **regularization penalty l=8.33**.  For this penalty factor, we obtained the following vector with the logistic regression coefficients:
+
+`beta= [ 1.32326951  2.16469435  3.26884738  2.9581783   4.16169908  0.`
+ `-0.8879601  -1.11242282  1.52275301 -1.1211198  -0.46753865 -0.17598219`
+  `-0.34580276  0.66996671  0.06875167  0.         -0.7048826  -0.2161716`
+  `-0.57902847 -0.96274254  0.44389867  0.1993682   0.         -1.03685355`
+  `-0.55990202 -1.54027642  0.08103512  0.          0.         -1.64762446`
+  `-0.72580185  0.          0.          0.06835987 -1.51138044  0.15431912`
+   `0.          0.04212707 -2.59252317 -0.12636422 -0.15799593  0.03410816`
+   `0.          1.01950092  1.2016845 ]`
 
 
 
-
-
-By retaining only the features which correspond ton nonzero coefficients we finally ended up with the following list of **important features**:
+By retaining only the features which correspond to **nonzero** coefficients we finally ended up with the following list of **important features**:
 
 
 
