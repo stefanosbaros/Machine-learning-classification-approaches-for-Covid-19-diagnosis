@@ -69,12 +69,24 @@ Having obtained a comprehensive list of features including the new ones that cap
 |  0.001 | 0.90186 | 0.90041 | 
 
 
-From the above table, we see that C=0.1 yields the predictor with the best accuracy both on training and test sets. Given that, we then repeat this process but now considering values for the constant C around 0.1. Specifically, we consider values for C in the range [0-0.3] with 0.01 step. The best performance is obtained for **C=0.12** which corresponds to **regularization penalty l=8.33**.
+From the above table, we see that **C=0.1** yields the predictor with the **best accuracy** both on training and test sets. Given that, we then repeat this process but now considering values for the constant C around 0.1. Specifically, we consider values for C in the range [0-0.3] with 0.01 step. The **best** performance is obtained for **C=0.12** which corresponds to **regularization penalty l=8.33**.  For this penalty factor, we obtained the following vector with the logistic regression coefficients:
 
 
 
-### Discussion on the results
-A couple of things are important to notice here. First, Model 2 performs better than Model 1, which means that a cubic function explains the data better than a quadratic one. Better performance here means larger Adjusted R-squared and smaller MSE and MAE. Model 3 and Model 4 which include the month and the hour as features lead to better performance than Model 2. This verifies our earlier argument that the month and hour are important variables that affect the electric load. Lastly, Model 5, 6 and the full model take into account the interaction effects and lead to further improvements in performance. Lastly, we see that the full model that includes all interaction effects leads to the best overall performance compared with the remaining six models i.e., largest Adjusted R-squared and smallest MSE and MAE. 
 
-![Actual vs predicted load](actual_predicted_load_temp.png) ![Actual vs predicted load](actual_predicted.png)
+
+By retaining only the features which correspond ton nonzero coefficients we finally ended up with the following list of **important features**:
+
+
+
+
+### Design of logistic regression and random forest classifiers
+
+Lastly, we designed a logistic regression classifier and a random forest classifier by training our algorithm on 90% of our data and keeping the remaining 10% for validation. The random forest classifier is designed using **1000 ensembled trees constructed from Bootstrap samples based on the entropy information gain criterion and with maximum depth 10** (n_estimators=1000, random_state=50, criterion='entropy', max_depth=10, bootstrap=True). We varied the depth of the trees from 4 to 15 in order to consider more complex classes for our classifiers. Beyond depth 10, we haven't seen improvement in the the performance of our random forest. Below we present the **performance of our logistic regression and random forest classifiers** which is **very close**. 
+
+| Logistic regression accuracy | Random forest accuracy |
+| ----------- | ----------- |
+| 10 | 0.90713 |
+
+We also show the confusion matrices of both classifiers.
         
