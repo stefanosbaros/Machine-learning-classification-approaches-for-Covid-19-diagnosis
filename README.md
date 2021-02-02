@@ -93,7 +93,7 @@ Lastly, we designed a logistic regression classifier and a random forest classif
 
 | Logistic regression accuracy | Random forest accuracy |
 | ----------- | ----------- |
-| 0.910078 | 0.91|
+| 0.910078 | 0.910269|
 
 We also show the confusion matrices of both classifiers.
 
