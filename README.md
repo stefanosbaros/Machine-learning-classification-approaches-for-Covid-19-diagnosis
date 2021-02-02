@@ -58,18 +58,19 @@ This list of features was subsequently used in model selection.
 
 ### Model selection via l1 regularization
 
-Having obtained a comprehensive list of features including new ones that capture interactions among the main features we performed logistic regression with l1 regularization in order to reduce this list to one containing only the important features.
+Having obtained a comprehensive list of features including new ones that capture interactions among the main features we performed logistic regression with l1 regularization in order to reduce this list to one containing only the important features. By defining the regularization penalty as l=1/C, we first performed logistic regression with l1 regularization by considering values for the constant C as given in the table below. For each value C, we obtained a different logistic regression classifier whose performance is recorded. 
 
 
-| Model | Adjusted R-squared | Mean squared error (MSE) | Mean absolute error (MAE) |
-| ----------- | ----------- | ----------- | ----------- |
-| Model 1 | 0.6219 | 13.9104 | 3.0579 |
-| Model 2 | 0.6307 | 13.5849 | 2.9827 |
-| Model 3 | 0.6483 | 12.9366 | 2.9064 |
-| Model 4 | 0.6853 | 11.5732 | 2.7271 |
-| Model 5 | 0.7117 | 10.6013 | 2.6510 |
-| Model 6 | 0.7404 | 9.5481 | 2.4757 |
-| Full model | 0.7951 | 7.5349 | 2.2172 |
+| C | Accuracy on training set | Accuracy on test set |
+| ----------- | ----------- | ----------- | 
+| 10 | 0.9071 | 0.9062 | 3.0579 |
+| 1 | 0.6307 | 13.5849 | 2.9827 |
+| 0.1 | 0.6483 | 12.9366 | 2.9064 |
+|  0.01 | 0.6853 | 11.5732 | 2.7271 |
+
+
+From the above table, we see that C=0.1 yields the predictor with the best accuracy both on training and test sets. Given that, we then repeat this process but now considering values for the constant C around 0.1. Specifically, we consider values for C in the range [0-0.3] with 0.01 step. The best performance is obtained for **C=0.12** which corresponds to **regularization penalty l=8.33**.
+
 
 
 ### Discussion on the results
