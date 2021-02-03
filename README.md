@@ -70,7 +70,7 @@ Having constructed a comprehensive list of features including new ones that capt
 |  0.001 | 0.90186 | 0.90041 | 
 
 
-We realized that **C=0.1** yields the predictor with the **best accuracy** both on training and test sets. In light of that, we then repeated this process with finer granurality by considering values for the constant C around 0.1. Specifically, we let C take all discrete values in the range [0-0.3] with 0.01 step. The **best** performance, **training accuracy=0.907154, test accuracy= 0.906273** is obtained for **C=0.12** which corresponds to a **regularization penalty l=8.33**.  For this penalty factor, we obtained the following vector of **logistic regression coefficients**:
+We realized that **C=0.1** yields the predictor with the **best accuracy** both on training and test sets. In light of that, we repeated this process with finer granurality by considering values for the constant C around 0.1. Specifically, we let C take all discrete values in the range [0-0.3] with 0.01 step. The **best** performance, **training accuracy=0.907154, test accuracy= 0.906273** is obtained for **C=0.12** which corresponds to a **regularization penalty l=8.33**.  For this penalty factor, we obtained the following vector of **logistic regression coefficients**:
 
 `beta = [ 1.32326951  2.16469435  3.26884738  2.9581783   4.16169908  0.`
  `-0.8879601  -1.11242282  1.52275301 -1.1211198  -0.46753865 -0.17598219`
