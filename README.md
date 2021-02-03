@@ -47,7 +47,7 @@ The initial **features** list was:
 
 - `features = ['cough', 'fever', 'sore_throat', 'shortness_of_breath' 'head_ache','age_60_and_above', 'gender', 'test_indication']`
             
-where `test_indication` captured whether an individual came in contact with confirmed positive case. After performing **one-hot encoding** the new list of **features** became:
+where `test_indication` captured whether an individual came in contact with a confirmed positive case. After performing **one-hot encoding** the new list of **features** became:
 
 - `features = ['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache',  'age_60_and_above', 'Male', 'Female', 'Contact_with_confirmed']`
 
