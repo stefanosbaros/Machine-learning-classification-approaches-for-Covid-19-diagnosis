@@ -39,7 +39,7 @@ Our departing point was to use **one-hot encoding** to design new binary feature
 - Model selection via l1 regularization 
 - Design of logistic regression and random forest classifiers
 
-Below, we discuss in detail these three steps.
+Below, we discuss these three steps in detail.
 
 ### Feature engineering for design of new features
 
