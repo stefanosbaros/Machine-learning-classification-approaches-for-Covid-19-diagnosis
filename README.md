@@ -59,7 +59,7 @@ This list of features was subsequently used in model selection.
 
 ### Model selection via l1 regularization
 
-Having constructed a comprehensive list of features including new ones that capture interactions among the main features we performed **logistic regression with l1 regularization** in order to shrink this list so that only the important features are retained. With the regularization penalty defined as **l=1/C**, we performed logistic regression with l1 regularization repeatedly by varying the constant C according to the table below. For each value C, we obtained a different logistic regression classifier whose performance on the training set and test set is recorded. We note that, **10% of the data is used for validation and 90% for training**.
+Having constructed a comprehensive list of features including new ones that capture interactions among the main features we performed **logistic regression with l1 regularization** in order to shrink this list so that only the important features are retained. With the regularization penalty defined as **l=1/C**, we performed **logistic regression with l1 regularization repeatedly by varying the constant C** according to the table below. For each value C, we obtained a different logistic regression classifier whose performance on the training set and test set is recorded. We note that, **10% of the data is used for validation and 90% for training**.
 
 
 | C | Accuracy on training set | Accuracy on test set |
