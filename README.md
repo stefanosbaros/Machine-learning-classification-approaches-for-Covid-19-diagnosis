@@ -51,7 +51,7 @@ where `test_indication` captured whether an individual came in contact with a co
 
 - `features = ['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache',  'age_60_and_above', 'Male', 'Female', 'Contact_with_confirmed']`
 
-By accounting for all possible **interactions among these main features**, except the male-female one, we obtained the following list of **features**:
+By accounting for all possible **interactions among these main features**, except the male-female one, we obtained the following list of **45 features**:
 
 - `features = ['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache', 'age_60_and_above', 'Male', 'Female', 'Contact_with_confirmed', 'cough+fever',                              'cough+sore_throat', 'cough+shortness_of_breath', 'cough+head_ache', 'cough+age_60_and_above', 'cough+Male', 'cough+Female', 'cough+Contact_with_confirmed',                      'fever+sore_throat', 'fever+shortness_of_breath', 'fever+head_ache', 'fever+age_60_and_above', 'fever+Male', 'fever+Female', 'fever+Contact_with_confirmed',                      'sore_throat+shortness_of_breath', 'sore_throat+head_ache', 'sore_throat+age_60_and_above', 'sore_throat+Male', 'sore_throat+Female',                                            'sore_throat+Contact_with_confirmed', 'shortness_of_breath+head_ache', 'shortness_of_breath+age_60_and_above', 'shortness_of_breath+Male',                                        'shortness_of_breath+Female', 'shortness_of_breath+Contact_with_confirmed', 'head_ache+age_60_and_above', 'head_ache+Male', 'head_ache+Female',                                  'head_ache+Contact_with_confirmed', 'age_60_and_above+Male', 'age_60_and_above+Female', 'age_60_and_above+Contact_with_confirmed', 'Male+Contact_with_confirmed',                'Female+Contact_with_confirmed']`
 
@@ -83,7 +83,7 @@ We realized that **C=0.1** yielded the predictor with the **best accuracy** both
 
 
 
-By retaining only the features which correspond to **nonzero** coefficients we finally ended up with the following list of **important features**:
+By retaining only the features which correspond to **nonzero** coefficients we finally ended up with the following list of **36 important features**:
 
 - `features = ['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache', 'Male', 'Female', 'Contact_with_confirmed', 'cough+fever', 'cough+sore_throat', 'cough+shortness_of_breath', 'cough+head_ache', 'cough+age_60_and_above', 'cough+Male', 'cough+Contact_with_confirmed', 'fever+sore_throat', 'fever+shortness_of_breath', 'fever+head_ache', 'fever+age_60_and_above', 'fever+Male', 'fever+Contact_with_confirmed', 'sore_throat+shortness_of_breath', 'sore_throat+head_ache', 'sore_throat+age_60_and_above', 'sore_throat+Contact_with_confirmed', 'shortness_of_breath+head_ache', 'shortness_of_breath+Female', 'shortness_of_breath+Contact_with_confirmed', 'head_ache+age_60_and_above', 'head_ache+Female', 'head_ache+Contact_with_confirmed', 'age_60_and_above+Male', 'age_60_and_above+Female', 'age_60_and_above+Contact_with_confirmed', 'Male+Contact_with_confirmed', 'Female+Contact_with_confirmed']`
 
