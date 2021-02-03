@@ -28,7 +28,7 @@ There are **three** main files in this project repository:
 The `forward_greedy_algorithm_features_selection.py` implements a **forward greedy selection algorithm** for sorting features according to their importance. It works as follows. First, we start with an empty set of selected features. We then apply our algorithm, in our case logistic regression, on the set of features obtained by adding one feature at a time to the selected features list and obtain a different predictor every time whose accuracy is recorded. We update the list of selected features every time by choosing the features that yields the predictor with the smallest risk (error).
 
 
-The `feature_engineering_and_l1_regularization_features_selection.py` is the file that contains our **feature engineering and model selection** approaches. We first design new features by considering all possible two-way interactions among the basic features in our data. In the sequel, we perform **l1 regularization** to uncover the list of important features that we later use for model design.
+The `feature_engineering_and_l1_regularization_features_selection.py` is the file that contains our **feature engineering and model selection** approaches. We design new features by considering all possible two-way interactions among the basic features in our data. In the sequel, we perform **l1 regularization** to uncover the list of important features that we later use in model design.
 
 The `Covid_prediction_classification_approaches.py.py` file contains the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on the symptoms he is experiencing.
 
