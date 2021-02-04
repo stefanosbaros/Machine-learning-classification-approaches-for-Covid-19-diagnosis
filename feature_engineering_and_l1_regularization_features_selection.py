@@ -28,18 +28,15 @@ import pickle
 
 # loading data
 
-main_file="/Users/stefanosbaros/Desktop/Covid_ML_project/"
-
-
-Covid_path = '/Users/stefanosbaros/Desktop/Covid_ML_project/corona_tested_individuals_Israel.csv'
-Covid_data = pd.read_csv(Covid_path)
+project_path="/Users/stefanosbaros/Desktop/Covid_ML_project/"
+Covid_data = pd.read_csv(project_path + 'corona_tested_individuals_Israel.csv')
 
 
 # data pre-processing
 Covid_data['corona_result']=np.where(Covid_data['corona_result']=='negative',0,1)
 Covid_data['age_60_and_above']=np.where(Covid_data['age_60_and_above']=='No',0,1)
 Covid_data['Male']=np.where(Covid_data['gender']=='male',1,0)
-Covid_data['Female']=np.where(Covid_data['gender']=='female',1,0)
+Covid_data['Female']=np.where(Covid_data['gender']=='female',1,0) # two columns unnecessary, could have gender= 0(male)/1(female), also reduces total number of features
 Covid_data['Contact_with_confirmed']=np.where(Covid_data['test_indication']=='Contact with confirmed',1,0)
 
 
@@ -69,7 +66,7 @@ for i in range(num_features):
 print('size of features list', len(all_features))    
 
 # storing data with new columns (features)
-Covid_data.to_csv(main_file + "Covid_data.csv")
+Covid_data.to_csv(project_path + "Covid_data.csv")
 
 
 
@@ -99,7 +96,7 @@ print('Full model accuracy score logistic regression:', score)
 #Logistic regression model with l1 regularization and different penalties
 
 
-# C = [i/100 for i in range(1,21)]
+# C = [i/100 for i in range(1,21)] #which one of these is actually used?
 
 #C = [i/100 for i in range(21,31)]
 Best_C = 0.12
@@ -110,6 +107,7 @@ Best_C = 0.12
 # Best_C=C[0]
 # max_acc=0
 
+# v Should this all be uncommented?
 # for c in C:
 #     logistic = LogisticRegression(penalty="l1", C=c, solver='liblinear').fit(X_train, y_train)
 #     logistic.fit(X_train, y_train)
