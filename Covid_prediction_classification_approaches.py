@@ -49,14 +49,13 @@ Covid_data = pd.read_csv(Covid_path)
 X = Covid_data[all_features] # features
 y = Covid_data['corona_result'] # labels
 
-#print(y.value_counts())
-
 # dividing data into train and test sets
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.30,random_state=50)
 
 #define the logistic regression model 
 log_reg_model = LogisticRegression()
 
+#v is this code used? and with the rest of the file, either uncomment or remove
 # weights = {0:0.095, 1:1.0}
 # log_reg_model = LogisticRegression(solver='lbfgs', class_weight=weights)
 
