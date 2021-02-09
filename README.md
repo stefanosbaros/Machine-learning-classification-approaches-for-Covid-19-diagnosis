@@ -4,7 +4,7 @@
 
 ## Project description
 
-In this project, we used data that were publicly reported by the Israeli Ministry of Health and designed three classifiers that can offer quick screening and efficient medical diagnosis for Covid-19. In particular, the developed classifiers were developed using **logistic regression, random forests techniques and gradient boosting treets (XGBoost)** and can predict whether an individual may be infected with Covid-19 based on several clinical symptoms such as cough, fever, shortness of breath etc. Our work is motivated by the urgent and timely need for the development of online tools that can aid alleviating the burden on healthcare systems. Our first step was to perform **feature engineering and design new features** that could potentially lead to better overall prediction performance. We considered **second and fifth degree interactions** among basic features. We then carried out **model selection via l1 regularization** to identify the important features and designed the three classifiers. We evaluated the performance of the classifiers via **standard accuracy metrics (recall, precision scores) and confusion matrices**.
+In this project, we used data that were publicly reported by the Israeli Ministry of Health and designed three classifiers that can offer quick screening and efficient medical diagnosis for Covid-19. In particular, the developed classifiers were developed using **logistic regression, random forests and gradient boosting trees (XGBoost)** techniques and can predict whether an individual may be infected with Covid-19 based on several clinical symptoms such as cough, fever, shortness of breath etc. Our work is motivated by the urgent and timely need for the development of online tools that can aid alleviating the burden on healthcare systems. Our first step was to perform **feature engineering and design new features** that could potentially lead to better overall prediction performance. We considered **second and fifth degree interactions** among basic features. We then carried out **model selection via l1 and l2 regularization** to identify the important features and designed the three classifiers. We evaluated the performance of the classifiers via **standard accuracy metrics (recall, precision scores) and confusion matrices**.
 
 . 
 
@@ -12,7 +12,7 @@ In this project, we used data that were publicly reported by the Israeli Ministr
 
 The dataset used in this project originated from the [Covid tested individuals data set](https://github.com/nshomron/covidpred/tree/master/data) - which is downloaded from the Israeli Ministry of Health website and translated into English by the authors of the paper [Machine learning-based prediction of COVID-19 diagnosis based on symptoms](https://www.nature.com/articles/s41746-020-00372-6).
 
-Data records symptoms experienced by and Covid-19 test results for 278848 people who were tested between the 11th of March of 2020 and 30th of April of 2020 in Israel. There are 10 columns in the data, the first one recoding the Covid-19 test date, and the remaining ones recording symptoms (cough, fever, sore throat, shortness of breath, headache), gender, whether the individual came in contact with a confirmed Covid-19 positive case, whether the individual is above 60 years old and, finally the Covid-19 test result.
+Data records symptoms experienced by and Covid-19 test results for **278848** people who were tested between the **11th of March of 2020 and 30th of April of 2020** in Israel. There are 10 columns in the data, the first one recoding the Covid-19 test date, and the remaining ones recording symptoms (cough, fever, sore throat, shortness of breath, headache), gender, whether the individual came in contact with a confirmed Covid-19 positive case, whether the individual is above 60 years old and, finally the Covid-19 test result.
 
 
 
@@ -33,15 +33,13 @@ The `forward_greedy_algorithm_features_selection.py` implements a **forward gree
 
 
 The `feature_engineering_and_l1_regularization_features_selection_sec_deg_inter.py`  and  `feature_engineering_and_l1_regularization_five_deg_inter.py`
-are the files that contain our **feature engineering and model selection** approaches. Therein, we design new features by considering all possible **second and fifth degree** interactions among the basic features in our data. In the sequel, we perform **l1 regularization** to uncover the list of important features that we later use in model design.
+are the files that contain our **feature engineering and model selection** approaches. Therein, we design new features by considering all possible **second and fifth degree** interactions among the basic features in our data. In the sequel, we perform **l1 and l2 regularization** to uncover the list of important features that we later use in model design.
 
-The  `Covid_prediction_classification_approaches_sec_deg_interactions.py` and  `Covid_prediction_classification_approaches_five_deg_interactions.py` files contain the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on the symptoms he is experiencing. The features used in these models are the important ones obtained via l1 regularization at the previous step using the two lists respectively
-- basic features and second-way interactions 
-- basic features and five-way interactions 
+The  `Covid_prediction_classification_approaches_sec_deg_interactions.py` and  `Covid_prediction_classification_approaches_five_deg_interactions.py` files contain the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on the symptoms he is experiencing. The **features** used to design these models are the ones obtained via l1 regularization at the previous step where the full features lists were considered respectively to be **basic features and second-way interactions**, **basic features and five-way interactions**. 
 
-The  `Covid_prediction_classification_approaches_baseline.py` file contains the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on clinical symptoms using only the basic **8 features**.
+The  `Covid_prediction_classification_approaches_baseline.py` file contains the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on clinical symptoms using only the **8 basic features**.
 
-The file `Covid_prediction_classification_approaches_XGBoost.py` contains the implementation of the **XGBoost approach** for predicting whether an individual may be infected or not with Covid-19 based on clinical symptoms using only the basic **8 features**.
+The file `Covid_prediction_classification_approaches_XGBoost.py` contains the implementation of the **XGBoost approach** for predicting whether an individual may be infected or not with Covid-19 based on clinical symptoms using only the **8 basic features**.
 
 
 
