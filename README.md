@@ -117,11 +117,11 @@ To design our XGBoost classifier that uses a gradient boosting tree algorithm we
 
 Suprisingly, all three classifiers, the **logistic regression, random forest and the XGBoost one** resulted in the **same optimal performance**. 
 
-| Algorithm | Logistic regression  | Random forest  | XG Boost |
+|  | Logistic regression  | Random forest  | XG Boost |
 | ------- | --- | --- | --- |
-| Recall score | 0.782 | 0.782 | 0.782 |
-| Precision score | 0.246 |  0.246  | 0.246 |
-| Accuracy score | 0.756 | 0.756 | 0.756 |
+| **Recall score** | 0.782 | 0.782 | 0.782 |
+| **Precision score** | 0.246 |  0.246  | 0.246 |
+| **Accuracy score** | 0.756 | 0.756 | 0.756 |
 
 Accuracy score logistic regression: 0.7559704732957012
 Precision score logistic regression: 0.24566967553061722
