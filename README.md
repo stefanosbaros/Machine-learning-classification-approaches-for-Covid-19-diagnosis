@@ -37,9 +37,9 @@ are the files that contain our **feature engineering and model selection** appro
 
 The  `Covid_prediction_classification_approaches_sec_deg_interactions.py` and  `Covid_prediction_classification_approaches_five_deg_interactions.py` files contain the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on the symptoms he is experiencing. The **features** used to design these models are the ones obtained via l1 regularization at the previous step where the full features lists were considered respectively to be **basic features and second-way interactions**, **basic features and five-way interactions**. 
 
-The  `Covid_prediction_classification_approaches_baseline.py` file contains the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on clinical symptoms using only the **8 basic features**.
+The  `Covid_prediction_classification_approaches_baseline.py` file contains the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on clinical symptoms using only the **9 basic features**.
 
-The file `Covid_prediction_classification_approaches_XGBoost.py` contains the implementation of the **XGBoost approach** for predicting whether an individual may be infected or not with Covid-19 based on clinical symptoms using only the **8 basic features**.
+The file `Covid_prediction_classification_approaches_XGBoost.py` contains the implementation of the **XGBoost approach** for predicting whether an individual may be infected or not with Covid-19 based on clinical symptoms using only the **9 basic features**.
 
 
 
