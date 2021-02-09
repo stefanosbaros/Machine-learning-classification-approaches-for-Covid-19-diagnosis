@@ -18,7 +18,7 @@ Data records symptoms experienced by and Covid-19 test results for **278848** pe
 
 ## Description of files
 
-There are **7** files in this project repository:
+There are **7 files** in this project repository:
 
 - `forward_greedy_algorithm_features_selection.py`
 - `feature_engineering_and_l1_regularization_sec_deg_inter.py`
@@ -44,10 +44,17 @@ The file `Covid_prediction_classification_approaches_XGBoost.py` contains the im
 
 
 ## Project details and results
-Our departing point was to use **one-hot encoding** to design new binary features that describe the Covid-19 test result, whether the individual is 60 years old and above, whether the individual came in contact with a confirmed Covid-19 positive case, and whether the individual is male or female. Using those features,  we then replaced related columns in the initial data set. Our methodology for constructing our classifiers can be broken down in three main steps:
+
+### Main challenge 
+The main challenge we faced in this project was the **large class imbalance** in our data set. After deleting almost half of our rows that were missing information whether the individual was 60 years old or above we were left with **125668 people with negative Covid-19 test result and  12504 people with positive Covid-19 test result**. The **ratio of instances with label 1 versus ones with label 0 is 9.9%**. To resolve this issue we manipulated the weights on our performance metric function.
+
+
+### Project description
+
+Our departing point was to use **one-hot encoding** to design new binary features that describe the Covid-19 test result, whether the individual is 60 years old and above, whether the individual came in contact with a confirmed Covid-19 positive case, and whether the individual is male or female. Using those features,  we then replaced related columns in the initial data set. Our methodology for constructing our classifiers can be broken down in **three main steps**:
 
 - Feature engineering for design of new features
-- Model selection via l1 regularization 
+- Model selection via l1 and l2 regularization 
 - Design of logistic regression and random forest classifiers
 
 Below, we discuss these three steps in detail.
@@ -62,43 +69,36 @@ where `test_indication` captured whether an individual came in contact with a co
 
 - `features = ['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache',  'age_60_and_above', 'Male', 'Female', 'Contact_with_confirmed']`
 
-By accounting for all possible **interactions among these main features**, except the male-female one, we obtained the following list of **45 features**:
+By accounting for all possible **second degree interactions among these main features**, except the male-female one, we obtained the following new list of **45 features**:
 
 - `features = ['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache', 'age_60_and_above', 'Male', 'Female', 'Contact_with_confirmed', 'cough+fever',                              'cough+sore_throat', 'cough+shortness_of_breath', 'cough+head_ache', 'cough+age_60_and_above', 'cough+Male', 'cough+Female', 'cough+Contact_with_confirmed',                      'fever+sore_throat', 'fever+shortness_of_breath', 'fever+head_ache', 'fever+age_60_and_above', 'fever+Male', 'fever+Female', 'fever+Contact_with_confirmed',                      'sore_throat+shortness_of_breath', 'sore_throat+head_ache', 'sore_throat+age_60_and_above', 'sore_throat+Male', 'sore_throat+Female',                                            'sore_throat+Contact_with_confirmed', 'shortness_of_breath+head_ache', 'shortness_of_breath+age_60_and_above', 'shortness_of_breath+Male',                                        'shortness_of_breath+Female', 'shortness_of_breath+Contact_with_confirmed', 'head_ache+age_60_and_above', 'head_ache+Male', 'head_ache+Female',                                  'head_ache+Contact_with_confirmed', 'age_60_and_above+Male', 'age_60_and_above+Female', 'age_60_and_above+Contact_with_confirmed', 'Male+Contact_with_confirmed',                'Female+Contact_with_confirmed']`
 
-This list of features was subsequently used in model selection.
-
-### Model selection via l1 regularization
-
-Having constructed a comprehensive list of features including new ones that capture interactions among the main features we performed **logistic regression with l1 regularization** in order to shrink this list so that only the important features are retained. With the regularization penalty defined as **l=1/C**, we performed **logistic regression with l1 regularization repeatedly by varying the constant C** according to the table below. For each value C, we obtained a different logistic regression classifier whose performance on the training set and test set is recorded. We note that, **10% of the data is used for validation and 90% for training**.
+Similarly, by accounting for all possible **five degree interactions among the important main features**, we obtained the following new list of **features**:
 
 
-| C | Accuracy on training set | Accuracy on test set |
-| ----------- | ----------- | ----------- | 
-| 10 | 0.90713 | 0.90623 | 
-| 1 | 0.90714 | 0.90624 | 
-| 0.1 | 0.90715 | 0.90627| 
-|  0.001 | 0.90186 | 0.90041 | 
+- `features = ['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache', 'age_60_and_above', 'Male', 'Female', 'Contact_with_confirmed', 'fever-sore_throat-shortness_of_breath-head_ache-Contact_with_confirmed', 'cough-sore_throat-shortness_of_breath-head_ache-Contact_with_confirmed', 'cough-fever-shortness_of_breath-head_ache-Contact_with_confirmed', 'cough-fever-sore_throat-head_ache-Contact_with_confirmed', 'cough-fever-sore_throat-shortness_of_breath-Contact_with_confirmed', 'cough-fever-sore_throat-shortness_of_breath-head_ache','cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache', 'age_60_and_above', 'Male', 'Female', 'Contact_with_confirmed', 'fever-sore_throat-shortness_of_breath-head_ache-Contact_with_confirmed', 'cough-sore_throat-shortness_of_breath-head_ache-Contact_with_confirmed', 'cough-fever-shortness_of_breath-head_ache-Contact_with_confirmed', 'cough-fever-sore_throat-head_ache-Contact_with_confirmed', 'cough-fever-sore_throat-shortness_of_breath-Contact_with_confirmed', 'cough-fever-sore_throat-shortness_of_breath-head_ache']`
 
 
-We realized that **C=0.1** yielded the predictor with the **best accuracy** both on training and test sets. In light of that, we repeated this process with finer granurality by considering values for the constant C around 0.1. Specifically, we let C take all discrete values in the range [0-0.3] with 0.01 step. The **best** performance, **training accuracy=0.907154, test accuracy= 0.906273** is obtained for **C=0.12** which corresponds to a **regularization penalty l=8.33**.  For this penalty factor, we obtained the following vector of **logistic regression coefficients**:
+These lists of features were subsequently used in model selection.
 
-`beta = [ 1.32326951  2.16469435  3.26884738  2.9581783   4.16169908  0.`
- `-0.8879601  -1.11242282  1.52275301 -1.1211198  -0.46753865 -0.17598219`
-  `-0.34580276  0.66996671  0.06875167  0.         -0.7048826  -0.2161716`
-  `-0.57902847 -0.96274254  0.44389867  0.1993682   0.         -1.03685355`
-  `-0.55990202 -1.54027642  0.08103512  0.          0.         -1.64762446`
-  `-0.72580185  0.          0.          0.06835987 -1.51138044  0.15431912`
-   `0.          0.04212707 -2.59252317 -0.12636422 -0.15799593  0.03410816`
-   `0.          1.01950092  1.2016845 ]`
+### Model selection via l1 and l2 regularization
+
+Having constructed a comprehensive list of features including new ones that capture interactions among the main features we performed **logistic regression with l1 and l2 regularization** in order to shrink these lists so that only the important features are retained. With the regularization penalty defined as **l=1/C**, we performed **logistic regression with l1 and l2 regularization repeatedly by considering the following values for the constant C** 10, 1, 0.1, 0.01 and 0.001. For each value C, we obtained a different logistic regression classifier whose performance on the training set and test set is recorded. Once the best value for C is identified, further tuning with finer granularity is performed by considering a range of values for C around that value. We note that, **10% of the data is used for validation and 90% for training**. We obtain similar results with l2 regularization so we only discuss the results obtained with l1 regularization here. 
+
+#### Performance criterion
+The performance criterion we used in model selection is the **recall/precision scores and the accuracy score**. For our problem however, the **most important score was the recall score** as we wanted to make sure that our classifiers are able to identify people which have been infected with Covid-19 and might need to be cautious with great accuracy.
+
+#### L1 regularization with second degree interactions
+We realized that **C=0.01**, which corresponds to a **regularization penalty l=100**, yielded the predictor with the **best accuracy** on the test set. In particular, we obtained a **recall score= 0.782** and accuracy on **test set=0.756**.  For this penalty factor, the reduced list of features we obtained matched exactly the list of basic features. Thus, we were able to conclude that the **second degree interaction features were not able to improve the performance of our logistic regression algorithm**.
+
+
+#### L1 regularization with fifth degree interactions
+We realized that **C=0.01 and C=0.1**, which correspond to a **regularization penalty l=100 and l=10**, yielded the predictors with the same **best accuracy** on the test set. In particular, we obtained the same scores as above, a **recall score= 0.782** and accuracy on **test set=0.756**.  For these penalty factors, the reduced list of features we obtained matched exactly the list of basic features once again. Thus, we were able to conclude that the **fifth degree interaction features were not able to improve the performance of our logistic regression algorithm**.
 
 
 
-By retaining only the features which correspond to **nonzero** coefficients we finally ended up with the following list of **36 important features**:
 
-- `features = ['cough', 'fever', 'sore_throat', 'shortness_of_breath', 'head_ache', 'Male', 'Female', 'Contact_with_confirmed', 'cough+fever', 'cough+sore_throat', 'cough+shortness_of_breath', 'cough+head_ache', 'cough+age_60_and_above', 'cough+Male', 'cough+Contact_with_confirmed', 'fever+sore_throat', 'fever+shortness_of_breath', 'fever+head_ache', 'fever+age_60_and_above', 'fever+Male', 'fever+Contact_with_confirmed', 'sore_throat+shortness_of_breath', 'sore_throat+head_ache', 'sore_throat+age_60_and_above', 'sore_throat+Contact_with_confirmed', 'shortness_of_breath+head_ache', 'shortness_of_breath+Female', 'shortness_of_breath+Contact_with_confirmed', 'head_ache+age_60_and_above', 'head_ache+Female', 'head_ache+Contact_with_confirmed', 'age_60_and_above+Male', 'age_60_and_above+Female', 'age_60_and_above+Contact_with_confirmed', 'Male+Contact_with_confirmed', 'Female+Contact_with_confirmed']`
 
-After uncovering the list of important features we moved to model design.
 
 ### Design of logistic regression and random forest classifiers
 
