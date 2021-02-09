@@ -24,8 +24,6 @@ There are **7 files** in this project repository:
 - `feature_engineering_and_l1_regularization_sec_deg_inter.py`
 - `feature_engineering_and_l1_regularization_five_deg_inter.py`
 - `Covid_prediction_classification_approaches_XGBoost.py`
-- `Covid_prediction_classification_approaches_sec_deg_interactions.py`
-- `Covid_prediction_classification_approaches_five_deg_interactions.py`
 - `Covid_prediction_classification_approaches_baseline.py`
 
 
@@ -35,7 +33,7 @@ The `forward_greedy_algorithm_features_selection.py` implements a **forward gree
 The `feature_engineering_and_l1_regularization_features_selection_sec_deg_inter.py`  and  `feature_engineering_and_l1_regularization_five_deg_inter.py`
 are the files that contain our **feature engineering and model selection** approaches. Therein, we design new features by considering all possible **second and fifth degree** interactions among the basic features in our data. In the sequel, we perform **l1 and l2 regularization** to uncover the list of important features that we later use in model design.
 
-The  `Covid_prediction_classification_approaches_sec_deg_interactions.py` and  `Covid_prediction_classification_approaches_five_deg_interactions.py` files contain the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on the symptoms he is experiencing. The **features** used to design these models are the ones obtained via l1 regularization at the previous step where the full features lists were considered respectively to be **basic features and second-way interactions**, **basic features and five-way interactions**. 
+<!-- The  `Covid_prediction_classification_approaches_sec_deg_interactions.py` and  `Covid_prediction_classification_approaches_five_deg_interactions.py` files contain the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on the symptoms he is experiencing. The **features** used to design these models are the ones obtained via l1 regularization at the previous step where the full features lists were considered respectively to be **basic features and second-way interactions**, **basic features and five-way interactions**. -->
 
 The  `Covid_prediction_classification_approaches_baseline.py` file contains the implementation of the **logistic regression and random forest classification approaches** for predicting whether an individual may be infected or not with Covid-19 based on clinical symptoms using only the **9 basic features**.
 
