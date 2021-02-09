@@ -127,4 +127,10 @@ The confusion matrix of all three algorithm as shown below was also identical.
 
 ![caption='Confusion matrix'](Confusion_matrix.png#center)
 
-        
+Below we also plot the **Receiver Operating Characteristic (ROC)** curve obtained for the logistic regression algorithm and compute the **Area Under Curve (AUC)**.
+
+![caption='ROC Curve'](ROC_curve.png#center)
+
+The **AUC is 0.84**.
+
+
