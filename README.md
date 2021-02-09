@@ -110,17 +110,17 @@ To address the class imbalance problem in our data we used the following class w
 #### Random forest classifier
 The random forest classifier is designed using **1000 ensembled trees constructed from Bootstrap samples based on the entropy information gain criterion and with maximum depth 10 and class weights as follows: 0.035 for the class with label 0 and 1 for the class with label 1** (n_estimators=1000, random_state=50, criterion='entropy', max_depth=10, bootstrap=True, class_weight={0:0.035,1:1}). We varied the depth of the trees from 4 to 15 in order to allow more complex classes in the model design process. Beyond depth 10, we have not seen any improvement in the performance of the random forest classifier. With the weights set to the values above, we obtained the best predictor, the one that yielded the highest recall score and good overall accuracy score.
 
-### XGBoost classifier
+#### XGBoost classifier
 To design our XGBoost classifier that uses a gradient boosting tree algorithm we used the following specifications **(n_estimators=1000, random_state=50, scale_pos_weight=28)** where the scale_pos_weight is the ratio of weight of the negative class to the positive class. With these values, we were able to obtain the best predictor, the one that yielded the highest recall score and good overall accuracy score.
 
 #### Performance
 
 Suprisingly, all three classifiers, the **logistic regression, random forest and the XGBoost one** resulted in the **same optimal performance**. 
 
-| ----------- | Logistic regression  | Random forest  | XGBoost |
-| Accuracy score | ----------- |
-| Recall score | 0.910269|
-| Precision score | 
+|   | Logistic regression  | Random forest  | XGBoost |
+| Accuracy score | ----------- | ----------- | ----------- |
+| Recall score | 0.910269| ----------- | ----------- |
+| Precision score |  ----------- | ----------- | ----------- |
 
 The confusion matrices corresponding to both classifiers are depicted below.
 
