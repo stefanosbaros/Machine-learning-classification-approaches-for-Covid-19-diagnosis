@@ -123,11 +123,8 @@ Suprisingly, all three classifiers, the **logistic regression, random forest and
 | **Precision score** | 0.246 |  0.246  | 0.246 |
 | **Accuracy score** | 0.756 | 0.756 | 0.756 |
 
-Accuracy score logistic regression: 0.7559704732957012
-Precision score logistic regression: 0.24566967553061722
-Recall score logistic regression: 0.7824397824397824
+The confusion matrix of all three algorithm as shown below was also identical. 
 
-The confusion matrices corresponding to both classifiers are depicted below.
-
+![caption='Confusion matrix'](Confusion_matrix.png#center)
 
         
