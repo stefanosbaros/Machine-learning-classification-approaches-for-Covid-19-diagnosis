@@ -23,7 +23,7 @@ We plotted the correlation matrices among the features for two groups. The first
 
 ## Description of files
 
-There are **7 files** in this project repository:
+There are **5 files** in this project repository:
 
 - `forward_greedy_algorithm_features_selection.py`
 - `feature_engineering_and_l1_regularization_sec_deg_inter.py`
