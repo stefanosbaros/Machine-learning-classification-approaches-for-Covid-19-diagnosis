@@ -82,7 +82,7 @@ Similarly, by accounting for all possible **five degree interactions among the i
 
 These lists of features were subsequently used in model selection.
 
-### Model selection via l1 and l2 regularization
+### Model selection via L1 and L2 regularization
 
 Having constructed a comprehensive list of features including new ones that capture interactions among the main features we performed **logistic regression with l1 and l2 regularization** in order to shrink these lists so that only the important features are retained. With the regularization penalty defined as **l=1/C**, we performed **logistic regression with l1 and l2 regularization repeatedly by considering the  values 10, 1, 0.1, 0.01 and 0.001 for the constant C**. For each value C, we obtained a different logistic regression classifier whose performance on the training set and test set is recorded. Once the best value for C is identified, further tuning with finer granularity is performed by considering a range of values for C around it. We note that, **10% of the data is used for validation and 90% for training**. We obtain similar results with l2 regularization so here we only discuss the results obtained with l1 regularization. 
 
