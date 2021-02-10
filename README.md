@@ -107,7 +107,7 @@ We designed a **logistic regression**, a **random forest** and an **XGBoost** cl
 #### Logistic regression classifier
 To address the class imbalance problem in our data we used the following class weights when we designed the logistic regression algorithm, **0.04 for the class with label 0 and 1 for the class with label 1** (solver='lbfgs', class_weight=weights). With these weights, we obtained the **best logistic regression predictor**, the one that yielded the highest recall score and good overall accuracy score. The logistic regression coefficients are:
 
-                        `w = [ 0.546 1.510 3.266  3.129  3.797  0.319  0.141 -0.138  3.497]`
+                        w = [0.546  1.510 3.266  3.129  3.797  0.319  0.141 -0.138  3.497]
 
 #### Random forest classifier
 The random forest classifier is designed using **1000 ensembled trees constructed from Bootstrap samples based on the entropy information gain criterion and with maximum depth 10 and class weights as follows: 0.035 for the class with label 0 and 1 for the class with label 1** (n_estimators=1000, random_state=50, criterion='entropy', max_depth=10, bootstrap=True, class_weight={0:0.035,1:1}). We varied the depth of the trees from 4 to 15 in order to allow more complex classes in the model design process. Beyond depth 10, we have not seen any improvement in the performance of the random forest classifier. With the weights set to the values above, we obtained the best predictor, the one that yielded the highest recall score and good overall accuracy score.
