@@ -14,6 +14,11 @@ The dataset used in this project originated from the [Covid tested individuals d
 
 Data records symptoms experienced by and Covid-19 test results for **278848** people who were tested between the **11th of March of 2020 and 30th of April of 2020** in Israel. There are 10 columns in the data, the first one recoding the Covid-19 test date, and the remaining ones recording symptoms (cough, fever, sore throat, shortness of breath, headache), gender, whether the individual came in contact with a confirmed Covid-19 positive case, whether the individual is above 60 years old and, finally the Covid-19 test result.
 
+## Exploratory data description
+
+![caption='Correlation matrix positive case'](Correlation_matrix_label_1.png#center)
+![caption='Correlation matrix positive case'](Correlation_matrix_label_2.png#center)
+
 
 
 ## Description of files
