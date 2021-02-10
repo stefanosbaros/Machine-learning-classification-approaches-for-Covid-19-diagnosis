@@ -14,12 +14,12 @@ The dataset used in this project originated from the [Covid tested individuals d
 
 Data records symptoms experienced by and Covid-19 test results for **278848** people who were tested between the **11th of March of 2020 and 30th of April of 2020** in Israel. There are 10 columns in the data, the first one recoding the Covid-19 test date, and the remaining ones recording symptoms (cough, fever, sore throat, shortness of breath, headache), gender, whether the individual came in contact with a confirmed Covid-19 positive case, whether the individual is above 60 years old and, finally the Covid-19 test result.
 
-## Exploratory data description
+## Exploratory data analysis
 
 ![caption='Correlation matrix positive case'](Correlation_matrix_label_1.png#center)
 ![caption='Correlation matrix positive case'](Correlation_matrix_label_2.png#center)
 
-
+We plotted the correlation matrices among the features for two groups. The first group are the people who got a **positive Covid-19 test result** (left figure) and the second group are the people who got a **negative Covid-19 test result** (right figure), Interestingly, one can observe that, for people who tested positive for Covid-19, the features cough, fever, sore throat, shortness of breath and headache are all significantly correlated which means that they tend to appear together. On the other hand, for people who tested negative for Covid-19 one can observe that the cough and fever are correlated (meaning they are reported together) and separately the sore throat, shortness of breath and headache are also correlated. This could potentially mean the people who decided to get tested experienced symptoms of other diseases which belonged to these two groups. In addition, the correlation of cough and contact with confirmed is higher in the people who tested negative. This potentially means that people who had cough and came in contact with a confirmed positive case more frequently decided to get tested.
 
 ## Description of files
 
