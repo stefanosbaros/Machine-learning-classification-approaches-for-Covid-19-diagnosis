@@ -59,7 +59,7 @@ Our departing point was to use **one-hot encoding** to design new binary feature
 Our methodology for constructing our classifiers can be broken down in **three main steps**:
 
 - Feature engineering for design of new features
-- Model selection via l1 and l2 regularization 
+- Model selection via L1 and L2 regularization 
 - Design of logistic regression and random forest classifiers
 
 Below, we discuss these three steps in detail.
