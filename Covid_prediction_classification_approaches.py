@@ -36,7 +36,6 @@ from sklearn.metrics import roc_auc_score
 with open("features.txt", "rb") as fp:   # Unpickling
     all_features= pickle.load(fp)
     
-#print('size of new features list', len(all_features))
 
 Covid_path = '/Users/stefanosbaros/Desktop/Covid_ML_project/Covid_data.csv'
 Covid_data = pd.read_csv(Covid_path)
@@ -48,8 +47,6 @@ Covid_data = pd.read_csv(Covid_path)
 # assessing with all new features with interactions
 X = Covid_data[all_features] # features
 y = Covid_data['corona_result'] # labels
-
-#print(y.value_counts())
 
 # dividing data into train and test sets
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.30,random_state=50)
